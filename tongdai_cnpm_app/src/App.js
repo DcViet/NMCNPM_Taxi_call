@@ -1,20 +1,34 @@
 // src/App.js
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import BookingtaxiScreen from './components/BookingtaxiScreen';
+import ConfirmationScreen from './components/ConfirmationScreen';
+import TaxiManagementScreen from './components/TaxiManagementScreen';
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch('http://localhost:5000/api/data')
-      .then(response => response.json())
-      .then(data => setData(data));
-  }, []);
 
   return (
-    <div>
-      <h1>Xin chào các bạn</h1>
-      <p>{data ? data.message : '21880291_21880273_21810052_22880138'}</p>
-    </div>
+    <Router>
+      <div>
+        <h1>HỆ THỐNG CALLCENTER</h1>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/call-center">Booking taxi</Link>
+            </li>
+            <li>
+              <Link to="/taxi-management">Manage Taxi</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/call-center" element={<BookingtaxiScreen />} />
+          <Route path="/confirmation" element={<ConfirmationScreen />} />
+          <Route path="/taxi-management" element={<TaxiManagementScreen />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
