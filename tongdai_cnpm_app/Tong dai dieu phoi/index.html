@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt xe</title>
+    <style>
+#header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#right-links {
+    display: flex;
+}
+
+.header-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.header-link:hover {
+    text-decoration: underline;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #searchButton {
+    background-color: #60545e;
+    color: white;
+    padding: 4px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="right-links">
+            <a href="/booking" class="header-link">Booking Taxi</a>
+            <a href="/manage" class="header-link">Manage Taxi</a>
+        </div>
+    </div>
+    <h1>Tổng đài đặt xe</h1>
+    <form id="bookingForm"  action="/book-ride" method="post">
+        <label for="phoneNumber">Số điện thoại:</label>
+        <input type="text" name="phoneNumber" required><br>
+
+        <label for="customerName">Tên khách hàng:</label>
+        <input type="text" name="customerName" required><br>
+
+        <label for="pickUpLocation">Điểm đón:</label>
+        <input type="text" name="pickUpLocation" required><br>
+
+
+        <label for="dropOffLocation">Điểm đến:</label>
+        <input type="text" name="dropOffLocation" required><br>
+
+        <label for="appointmentTime">Thời gian hẹn:</label>
+        <input type="text" name="appointmentTime" required><br>
+
+        <button type="submit">Đặt xe</button>
+    </form>
+
+    <div id="loadingScreen" style="display: none;">
+        <p>Đang tìm tài xế...</p>
+    </div>
+<script>
+    // Thêm mã JavaScript để ẩn form và hiển thị màn hình chờ khi cần
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Ẩn form
+        document.getElementById('bookingForm').style.display = 'none';
+
+        // Hiển thị màn hình chờ
+        document.getElementById('loadingScreen').style.display = 'block';
+
+        // Gửi dữ liệu form đến server bằng cách sử dụng Ajax hoặc fetch
+        // Sau khi nhận phản hồi từ server, bạn có thể chuyển người dùng đến một trang khác hoặc thực hiện các xử lý khác.
+    });
+    </script>
+</body>
+</html>
